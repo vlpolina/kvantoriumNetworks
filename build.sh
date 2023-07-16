@@ -1,7 +1,7 @@
 #!/bin/bash
 
-venv/Scripts/activate
+source venv/Scripts/activate
 
-$env:PYTHONPATH = "/venv/Lib/site-packages/django"
+pip install -r requirements.txt
 
 python kvantoriumNetworks/manage.py collectstatic --noinput
