@@ -1,5 +1,5 @@
 [build]
-  command = "python manage.py collectstatic --noinput"
+  command = "python kvantoriumNetworks/manage.py collectstatic --noinput"
 
 [build.environment]
   DJANGO_SETTINGS_MODULE = "kvantoriumNetworks.settings.production"
