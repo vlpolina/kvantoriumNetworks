@@ -1,0 +1,36 @@
+{% extends 'networksLearning/base.html' %}
+
+{% block next %}
+{% endblock %}
+
+{% block main %}
+<h1 class="py-3 text-center" style="font-family: 'TildaSans bold'">{{ title }}</h1>
+<p class="fs-5 mb-2 text-center mx-auto">Перед началом игры выбери своего персонажа и придумай ему имя.
+    <br>Скины персонажей пронумерованы, напиши номер понравившегося во второе поле. А ещё тебе нужно придумать пароль :)</p>
+<form method="post" class="row mb-3 col-md-5 text-center mx-auto">
+    {% csrf_token %}
+
+        <label for="{{ form.username.id_for_label }}" class="col-md-4 fs-5 col-form-label">{{ form.username.label }}:</label>
+        <div class="col-md-8">
+            {{ form.username }}
+        </div>
+        <label for="{{ form.first_name.id_for_label }}" class="col-md-4 fs-5 col-form-label">{{ form.first_name.label }}:</label>
+        <div class="col-md-8">
+            {{ form.first_name }}
+        </div>
+        <div class="form-error fs-5">
+            {{ form.username.errors }}
+            {{ form.first_name.errors }}
+        </div>
+
+    <button type="submit" class="btn fs-5 col-md-4 text-center mx-auto btn-success">Подтвердить</button>
+</form>
+<div class="row col-md-10 row-cols-6 mx-auto text-center">
+    {% for p in pers %}
+    <div class="col-md-2">
+        <p class="fs-5">{{ p.id }}</p>
+        <img class="mb-2" src="http://localhost:8000/{{p.person.url}}" alt="image">
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

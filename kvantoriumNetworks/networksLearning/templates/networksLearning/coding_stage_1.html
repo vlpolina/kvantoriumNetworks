@@ -1,0 +1,83 @@
+{% extends 'networksLearning/base.html' %}
+{% load static %}
+{% block next %}
+    {% if result == "Ура, получилось, я снова могу пользоваться файлами!" %}
+    <a class="btn btn-success mx-5" aria-current="page" style="position:absolute; right:0;" href="{% url 'stage_2' %}">Далее<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg></a>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    <h1  class="col-md-1 text-center py-3 mx-auto" style="font-family: 'TildaSans bold'">{{ title }}</h1>
+    <div class="col-md-10 mx-auto">
+        <div class="col-md-1 d-inline-block mx-auto">
+            <img class="d-block mx-auto" src="http://localhost:8000/{{im_pers.person.url}}" alt="image">
+        </div>
+        <p class=" col-md-11 float-end d-inline-block fs-4 mb-2 text-center"><span class="fs-5 badge bg-light text-dark">{{personaj.username}}:</span> Ну что, начнём кодить? Вирус удалил все файлы для работы нейросети... <br>Давай подключим все необходимые файлы.
+            Нам понадобятся файл "keras", файл "cifar10" из библиотеки "keras.datasets", файл "Sequential" из "keras.models", файл "Dense" и файл "Flatten" из "keras.layers" и файл "Adam" из "keras.optimizers".
+            <br>Если ты не запомнил, как правильно подключать файлы, то всегда можешь вернуться к обучению и освежить память. Поехали!</p>
+    </div>
+    <div class="row col-md-10 text-center mx-auto">
+        <div class="col-md-6">
+            <div>
+                <script type="text/javascript" src="{% static 'networksLearning/js/helpers.js' %}"></script>
+                <p class="fs-5 mt-3">Возникли сложности? Я могу подсказать тебе!</p>
+                <button type="button" class="btn btn-warning fs-6 col-md-3 d-inline-block" id="1" onclick="showHelpers(1)" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb my-auto" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+</svg>
+                    Подсказка 1</button>
+                <button type="button" class="btn btn-warning fs-6 col-md-3 d-inline-block" id="2" onclick="showHelpers(2)" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb my-auto" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+</svg>
+                    Подсказка 2</button>
+                <button type="button" class="btn btn-warning fs-6 col-md-3 d-inline-block" id="3" onclick="showHelpers(3)" disabled>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightbulb my-auto" viewBox="0 0 16 16">
+  <path d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z"/>
+</svg>
+                    Подсказка 3</button>
+                <script type="text/javascript" src="{% static 'networksLearning/js/active_button_1.js' %}"></script>
+                <pre class="codebox mt-2 col-md-9 mx-auto text-start border border-white px-5 py-3" id="output" style="white-space: pre-line; border-radius: 10px; background-color: #363636;">
+                    <code class="language-javascript">
+                        Подсказки станут доступны через какое-то время
+                    </code>
+                </pre>
+            </div>
+        </div>
+        <div class="code-editor form-floating col-md-6 d-inline-block mt-3">
+           <div class="input-group">
+                <div class="">
+                    <span class="input-group-text">
+                        1<br>
+                        2<br>
+                        3<br>
+                        4<br>
+                        5<br>
+                        6<br>
+                        7<br>
+                        8<br>
+                    </span>
+                </div>
+                <form method="POST" action="{% url 'stage_1' %}">
+                    {% csrf_token %}
+                    {{ form }}
+                    {% if result != "Ура, получилось, я снова могу пользоваться файлами!" %}
+                        <button type="submit" class="btn btn-success fs-5 mt-3 mb-1">Проверить код</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div class="text-center col-md-10 mt-1">
+            <label for="out" class="col-md-2 col-form-label mt-3 d-inline-block float-start fs-4">VGG16:</label>
+            <div class="col-md-10 mt-4 d-inline-block">
+                <output class="form-control" id="out">
+                    <p class="fs-5 mt-3 float-start">{{ result }}</p>
+                    <p class="fs-5 mt-3 float-start">{{ error }}</p>
+                </output>
+            </div>
+        </div>
+    </div><br>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="musicHome.musicHome.urls.online_shop" />
+          <option value="urls.*" />
+          <option value="musicHome.online_shop.serializer.React" />
+          <option value="django.conf.urls.url" />
+          <option value="musicHome.online_shop.views.React" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

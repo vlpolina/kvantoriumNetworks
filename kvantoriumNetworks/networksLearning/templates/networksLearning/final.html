@@ -1,0 +1,70 @@
+{% extends 'networksLearning/base.html' %}
+
+{% block next %}
+
+{% endblock %}
+
+{% block main %}
+    <h1  class="col-md-2 text-center py-4 mx-auto" style="font-family: 'TildaSans bold'">{{ title }}</h1>
+    <div class="col-md-10 mx-auto">
+        <div class="col-md-1 d-inline-block mx-auto">
+            <img class="d-block mx-auto" src="http://localhost:8000/{{im_pers.person.url}}" alt="image">
+        </div>
+        <div class="col-md-11 float-end d-inline-block">
+            <p class="fs-4 mb-2 text-center"><span class="fs-5 badge bg-light text-dark">{{personaj.username}}:</span>Поздравляю, ты прошёл игру и починил VGG16!<br>Если тебе понравилось писать на языке программирования "Питон" и работать с нейросетью, то ты можешь продолжить обучение самостоятельно :) Если хочешь получить полезный материал для изучения, укажи свой адрес электронной почты ниже и жди сообщения.</p>
+            <span class="fs-5 badge bg-warning text-dark mx-auto text-center">Обязательно нажми "Завершить игру"! Если не хочешь, оставлять почту не обязательно, просто оставь поле пустым.</span>
+        </div>
+    </div>
+    <div class="row col-md-10 text-center mx-auto">
+        <div class="col-md-12">
+            <div>
+                <form  class="col-md-6 text-center mx-auto mb-3" method="POST" action="{% url 'final' %}">
+                    {% csrf_token %}
+                    {{ form }}
+                    <button type="submit" name="finish_game" class="btn btn-success fs-5 mt-3">Завершить игру</button>
+                </form>
+                <p class="text-center fs-4">{{ sending }}</p>
+            </div>
+        </div>
+        <p class="fs-5">А это полный код, в написании которого ты принимал участие. Его мы тоже отправим на почту :)</p>
+        <div class="code-editor form-floating col-md-8 text-center mx-auto">
+           <div class="input-group">
+                <div class="">
+                    <span class="input-group-text">
+                        1<br>
+                        2<br>
+                        3<br>
+                        4<br>
+                        5<br>
+                        6<br>
+                        7<br>
+                        8<br>
+                        9<br>
+                        10<br>
+                        11<br>
+                        12<br>
+                        13<br>
+                        14<br>
+                        15<br>
+                        16<br>
+                        17<br>
+                        18<br>
+                        19<br>
+                        20<br>
+                        21<br>
+                        22<br>
+                        23<br>
+                        24<br>
+                        25<br>
+                        26<br>
+                        27<br>
+                        28<br>
+                        29<br>
+                        30<br>
+                    </span>
+                </div>
+                <textarea class="form-control", aria-label="code", aria-describedby="input-group-left", cols="60", rows="10", style="resize: none;">{{ code }}</textarea>
+            </div>
+        </div>
+    </div><br>
+{% endblock %}

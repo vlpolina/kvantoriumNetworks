@@ -1,0 +1,41 @@
+{% extends 'networksLearning/base.html' %}
+
+{% block next %}
+{% endblock %}
+
+{% block main %}
+    <h1  class="col-md-2 text-center py-3 mx-auto" style="font-family: 'TildaSans bold'">{{ title }}</h1>
+    <div class="col-md-10 mx-auto">
+        <div class="col-md-1 d-inline-block mx-auto">
+            <img class="d-block mx-auto" src="http://localhost:8000/{{im_pers.person.url}}" alt="image">
+        </div>
+        <p class=" col-md-11 float-end d-inline-block fs-4 mb-2 text-center"><span class="fs-5 badge bg-light text-dark">{{personaj.username}}:</span>Итак, VGG16 готова для того, чтобы попробовать распознать какое-нибудь изображение.<br>
+    Выбери одну картинку из предложенных ниже:</p>
+    </div>
+    <div class="col-md-10 text-center mx-auto">
+        <form method="post" action="{% url 'stage_3' %}">
+            {% csrf_token %}
+            <div class="row col-md-10 row-cols-4 mx-auto text-center">
+                {% for im in images %}
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="selected_image" id="image{{ forloop.counter }}" value="{{ im.id }}">
+                            <label class="form-check-label" for="image{{ forloop.counter }}">
+                                <img class="mb-2" src="http://localhost:8000/{{im.image.url}}" alt="image" style="border-radius: 10px">
+                            </label>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-success fs-4 my-3">Подтвердить выбор</button>
+        </form>
+        <div class="text-center col-md-10 mt-1">
+            <label for="out" class="col-md-2 col-form-label mt-3 d-inline-block float-start fs-4">VGG16:</label>
+            <div class="col-md-10 mt-4 d-inline-block">
+                <output class="form-control" id="out">
+                    <p class="fs-5 mt-3 float-start">Это мне нравится!{{ result }}</p>
+                </output>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+body {
+    color: #ffffff !important;
+    font-family: 'TildaSans' !important;
+
+    background-image: url(../sources/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Обычный */
+@font-face {
+	font-family: 'TildaSans';
+	src: url(../sources/fonts/TildaSans-Regular.ttf);
+}
+
+/* Жирный */
+@font-face {
+	font-family: 'TildaSans bold';
+	src: url(../sources/fonts/TildaSans-Bold.ttf);
+}
+
+/* Легкий */
+@font-face {
+	font-family: 'TildaSans light';
+	src: url(../sources/fonts/TildaSans-Light.ttf);
+
+
