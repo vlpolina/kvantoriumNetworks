@@ -3,4 +3,3 @@
 
 [build.environment]
   DJANGO_SETTINGS_MODULE = "kvantoriumNetworks.settings.production"
-  PYTHON_VERSION = "3.11.1"
