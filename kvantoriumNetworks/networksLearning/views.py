@@ -7,7 +7,7 @@ from .forms import *
 import sys
 from io import StringIO
 from django.core.mail import send_mail
-from googletrans import Translator
+#from googletrans import Translator
 from django.contrib.sessions.models import Session
 
 
@@ -76,12 +76,12 @@ import matplotlib.pyplot as plt
 
             except Exception as e:
                 error = str(e)
-                translator = Translator()
-                err = translator.translate(error, dest='ru').text
+                #translator = Translator()
+                #err = translator.translate(error, dest='ru').text
                 context_1_error = {
                     'title': 'Этап 1',
                     'form': form,
-                    'error': err,
+                    'error': error,
                     'personaj': personaj,
                     'im_pers': im_pers,
                 }
@@ -146,12 +146,12 @@ nazvanie_2 = keras.utils.to_categorical(nazvanie_2, 10)
 
             except Exception as e:
                 error = str(e)
-                translator = Translator()
-                err = translator.translate(error, dest='ru').text
+                #translator = Translator()
+                #err = translator.translate(error, dest='ru').text
                 context_2_error = {
                     'title': 'Этап 2',
                     'form': form,
-                    'error': err,
+                    'error': error,
                     'personaj': personaj,
                     'im_pers': im_pers,
                 }
@@ -303,12 +303,12 @@ print("На выбранной тобой картинке изображени�
 
             except Exception as e:
                 error = str(e)
-                translator = Translator()
-                err = translator.translate(error, dest='ru').text
+                #translator = Translator()
+                #err = translator.translate(error, dest='ru').text
                 context_4_error = {
                     'title': 'Этап 4',
                     'form': form,
-                    'error': err,
+                    'error': error,
                     'picture': picture,
                     'personaj': personaj,
                     'im_pers': im_pers,

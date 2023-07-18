@@ -8,7 +8,7 @@
     <h1  class="col-md-2 text-center py-4 mx-auto" style="font-family: 'TildaSans bold'">{{ title }}</h1>
     <div class="col-md-10 mx-auto">
         <div class="col-md-1 d-inline-block mx-auto">
-            <img class="d-block mx-auto" src="http://kvantNeuNet.pythonanywhere.com/{{im_pers.person.url}}" alt="image">
+            <img class="d-block mx-auto" src="{{ request.scheme }}://{{ request.get_host }}{{im_pers.person.url}}" alt="image">
         </div>
         <div class="col-md-11 float-end d-inline-block">
             <p class="fs-4 mb-2 text-center"><span class="fs-5 badge bg-light text-dark">{{personaj.username}}:</span>Поздравляю, ты прошёл игру и починил VGG16!<br>Если тебе понравилось писать на языке программирования "Питон" и работать с нейросетью, то ты можешь продолжить обучение самостоятельно :) Если хочешь получить полезный материал для изучения, укажи свой адрес электронной почты ниже и жди сообщения.</p>

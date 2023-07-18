@@ -29,7 +29,7 @@
     {% for p in pers %}
     <div class="col-md-2">
         <p class="fs-5">{{ p.id }}</p>
-        <img class="mb-2" src="http://kvantNeuNet.pythonanywhere.com/{{p.person.url}}" alt="image">
+        <img class="mb-2" src="{{ request.scheme }}://{{ request.get_host }}{{p.person.url}}" alt="image">
     </div>
     {% endfor %}
 </div>

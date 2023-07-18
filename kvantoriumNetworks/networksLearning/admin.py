@@ -17,6 +17,6 @@ class PersonAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'person')
 
 
-admin.site.register(UserCode)
-admin.site.register(Images)
-admin.site.register(Person)
+admin.site.register(UserCode, UserCodeAdmin)
+admin.site.register(Images, ImagesAdmin)
+admin.site.register(Person, PersonAdmin)
